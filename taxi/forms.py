@@ -2,12 +2,15 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
-from taxi.models import Driver, Car
+from taxi.models import Car
 
 
 def validate_license_number(value):
     if len(value) != 8:
-        raise ValidationError("License number must be 8 digits")
+        raise ValidationError(
+            "License number must be exactly 8 characters: "
+            "first 3 uppercase letters (A-Z), then 5 digits (0-9)."
+        )
 
     if not value[:3].isalpha() or not value[:3].isupper():
         raise ValidationError("First 3 characters must be uppercase letters")
