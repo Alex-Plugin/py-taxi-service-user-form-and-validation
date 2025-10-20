@@ -7,7 +7,7 @@
     {% csrf_token %}
     <div class="form-group d-flex">
       <input type="submit" value="Confirm Delete" class="btn btn-danger">
-      <a href="{% url 'taxi:driver-list' %}" class="btn btn-secondary ml-2">Cancel</a>
+      <button type="button" class="btn btn-secondary ml-2" onclick="history.back()">Cancel</button>
     </div>
   </form>
 {% endblock %}
